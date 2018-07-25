@@ -8,6 +8,7 @@
 #include <vector>
 #include <stdlib.h>
 #include <string>
+#include <windows.h>
 
 using namespace std;
 
@@ -20,24 +21,31 @@ int main()
     vector<string> colsName, colsType;
     vector< vector<string> > lines;
 
+    // get the number of columns (only for windows)
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+    int columns = csbi.srWindow.Right - csbi.srWindow.Left + 1;
+
     // display
-    cout << "////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////";
-    cout << "//   _____  _______      __   __ _ _        _           _____  ____  _                                                //";
-    cout << "//  / ____|/ ____\\ \\    / /  / _(_) |      | |         / ____|/ __ \\| |                                               //";
-    cout << "// | |    | (___  \\ \\  / /  | |_ _| | ___  | |_ ___   | (___ | |  | | |                                               //";
-    cout << "// | |     \\___ \\  \\ \\/ /   |  _| | |/ _ \\ | __/ _ \\   \\___ \\| |  | | |                                               //";
-    cout << "// | |____ ____) |  \\  /    | | | | |  __/ | || (_) |  ____) | |__| | |____                                           //";
-    cout << "//  \\_____|_____/    \\/     |_| |_|_|\\___|  \\__\\___/  |_____/ \\___\\_\\______|                                          //";
-    cout << "//                                                                                                                    //";
-    cout << "//  A software made by Tom BEFIEUX.                                                                                   //";
-    cout << "//  Contact: contact@tom-befieux.fr                                                                                   //";
-    cout << "//                                                                                                                    //";
-    cout << "////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////";
-    cout << "//                                                                                                                    //";
-    cout << "//  CSV file to SQL converter can convert a basic CVS file into a SQL file.                                           //";
-    cout << "//  IMPORTANT: The first line of the file must contain the names of the columns.                                      //";
-    cout << "//                                                                                                                    //";
-    cout << "////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////";
+    cout << endl;
+    cout << "     _____  _______      __   __ _ _        _           _____  ____  _" << endl;
+    cout << "    / ____|/ ____\\ \\    / /  / _(_) |      | |         / ____|/ __ \\| |" << endl;
+    cout << "   | |    | (___  \\ \\  / /  | |_ _| | ___  | |_ ___   | (___ | |  | | |" << endl;
+    cout << "   | |     \\___ \\  \\ \\/ /   |  _| | |/ _ \\ | __/ _ \\   \\___ \\| |  | | |" << endl;
+    cout << "   | |____ ____) |  \\  /    | | | | |  __/ | || (_) |  ____) | |__| | |____" << endl;
+    cout << "    \\_____|_____/    \\/     |_| |_|_|\\___|  \\__\\___/  |_____/ \\___\\_\\______|" << endl;
+    cout << endl;
+    cout << "    A software made by Tom BEFIEUX." << endl;
+    cout << "    Contact: contact@tom-befieux.fr" << endl;
+    cout << endl;
+    for(int i = 0; i < columns; i++)
+        cout << "/";
+    cout << endl;
+    cout << "    CSV file to SQL converter can convert a basic CVS file into a SQL file." << endl;
+    cout << "    IMPORTANT: The first line of the file must contain the names of the columns." << endl;
+    cout << endl;
+    for(int i = 0; i < columns; i++)
+        cout << "/";
 
     // ask informations
     cout << endl << " First, we need some informations:" << endl << endl;
